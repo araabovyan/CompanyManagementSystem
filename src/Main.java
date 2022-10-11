@@ -1,14 +1,20 @@
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<String>();
-        list.addLast("a");
-        list.addLast("b");
-        list.addLast("c");
-        list.addLast("d");
-        list.addLast("e");
-        list.print();
-        reverse(list);
-        list.print();
+        ArrayDeque<String> d = new ArrayDeque<>();
+        d.pushFront("a");
+        d.pushBack("b");
+        d.pushFront("c");
+        d.pushFront("d");
+        d.print();
+        Iterator<String> i = d.iterator();
+        while(i.hasNext()){
+            System.out.println(i.next());
+        }
+//        list.print();
+//        reverse(list);
+//        list.print();
 
     }
 

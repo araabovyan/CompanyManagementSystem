@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 class ArrayStack<E> implements Stack<E>{
     public static final int CAPACITY = 1000;
     private int t = -1;
@@ -51,5 +53,10 @@ class ArrayStack<E> implements Stack<E>{
         data[t] = null;
         t--;
         return answer;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 }
