@@ -1,0 +1,55 @@
+class ArrayStack<E> implements Stack<E>{
+    public static final int CAPACITY = 1000;
+    private int t = -1;
+    E[] data;
+
+    public ArrayStack(){
+        this(CAPACITY);
+    }
+    public ArrayStack(int capacity){
+        data = (E[]) new Object[capacity];
+    }
+
+    public int size(){
+        return t+1;
+    }
+
+    public boolean isEmpty(){
+        return size() == 0;
+    }
+
+    @Override
+    public void empty() {
+        data = (E[]) new Object[CAPACITY];
+        t = -1;
+    }
+
+    @Override
+    public void print() {
+        StringBuilder sb = new StringBuilder("(");
+        for (int j = t; j >= 0; j--) {
+            sb.append(data[j]);
+            if (j > 0) sb.append(", ");
+        }
+        sb.append(")");
+        System.out.println(sb.toString());
+    }
+
+    public void push(E e) throws IllegalStateException{
+        if(size() == data.length) throw new IllegalStateException("Stack is full");
+        data[++t] = e;
+    }
+
+    public E top(){
+        if(isEmpty()) return null;
+        return data[t];
+    }
+
+    public E pop(){
+        if(isEmpty()) return null;
+        E answer = data[t];
+        data[t] = null;
+        t--;
+        return answer;
+    }
+}
