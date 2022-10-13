@@ -109,12 +109,22 @@ public class ArrayDeque<E> implements Deque<E>{
     @Override
     public boolean swap(E v1, E v2) {
         for (int j = 0; j < size; j++) {
-            if (data[(f + j) % data.length] == v1) {
+            if (data[(f + j) % data.length].equals(v1)) {
                 data[(f + j) % data.length] = v2;
                 return true;
             }
         }
         return false;
+    }
+
+    public void swapObjects(E v1, E v2){
+        for (int j = 0; j < size; j++) {
+            if(data[(f + j) % data.length] == v1){
+                data[(f + j) % data.length] = v2;
+            }else if(data[(f + j) % data.length] == v2){
+                data[(f + j) % data.length] = v1;
+            }
+        }
     }
 
     private class ArrayDequeIterator<E> implements Iterator<E>{
