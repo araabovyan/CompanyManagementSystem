@@ -63,6 +63,10 @@ public class ArrayList<E> implements List<E>{
         size++;
     }
 
+    public void add(E e){
+        add(size, e);
+    }
+
     public E remove(int i) throws IndexOutOfBoundsException {
         checkIndex(i, size);
         E answer = data[i];

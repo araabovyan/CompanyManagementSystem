@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.LinkedList;
 
 public class Company {
     private String name;
@@ -6,10 +7,38 @@ public class Company {
     private Employee[] employees;
     ArrayDeque<Employee> top10performers;
     private int count = 0;
+    static HashMap<Employee, LinkedList<Employee>> mentors = new HashMap<>(17);
 
     public Company(String name, int capacity) {
         this.name = name;
         employees = new Employee[capacity];
+    }
+
+    static boolean enableMentorship(Employee mentor, Employee mentee){
+        LinkedList<Employee> mentees = mentors.get(mentor);
+        for(Employee m : mentees){
+            if(m.equals(mentee)){
+                return true;
+            }
+        }
+
+        if (mentees.size() >= 3){
+            return false;
+        }else{
+            mentees.addLast(mentee);
+            return true;
+        }
+    }
+
+    static Employee getMentor(Employee mentee){
+        for(Entry<Employee, LinkedList<Employee>> e : mentors.entrySet()){
+            for(Employee m : e.getValue()){
+                if(m.equals(mentee)){
+                    return e.getKey();
+                }
+            }
+        }
+        return null;
     }
 
     public Executive getDirector() {

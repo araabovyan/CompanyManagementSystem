@@ -2,8 +2,10 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        testDequeMethods("Array");
-        testDequeMethods("LinkedList");
+//        testDequeMethods("Array");
+//        testDequeMethods("LinkedList");
+        testHashMap();
+        testHashSet();
     }
 
     private static <E> void testDequeMethods(String dequeType) {
@@ -13,6 +15,61 @@ public class Main {
         testBack(dequeType);
 
         System.out.println();
+    }
+
+    public static void testHashSet(){
+        testAdd();
+        testContains();
+    }
+
+    public static void testContains(){
+        HashSet<String> hs = new HashSet<>();
+        hs.add("first");
+        hs.add("second");
+        if(hs.contains("second")){
+            System.out.println("PASS: contains method");
+        }else{
+            System.out.println("FAIL: contains method");
+        }
+    }
+
+    public static void testAdd(){
+        HashSet<String> hs = new HashSet<>();
+        hs.add("first");
+        hs.add("second");
+        if(hs.size() == 2){
+            System.out.println("PASS: add method");
+        }else{
+            System.out.println("FAIL: add method");
+        }
+    }
+
+    public static void testHashMap(){
+        testPut();
+        testRemove();
+    }
+
+    public static void testPut(){
+        HashMap<String, Integer> hm = new HashMap<>(17);
+        hm.put("first", 1);
+        hm.put("second", 2);
+        if(hm.size() == 2){
+            System.out.println("PASS: put method");
+        }else{
+            System.out.println("FAIL: put method");
+        }
+    }
+
+    public static void testRemove(){
+        HashMap<String, Integer> hm = new HashMap<>(17);
+        hm.put("first", 1);
+        hm.put("second", 2);
+        hm.remove("first");
+        if(hm.size() == 1){
+            System.out.println("PASS: remove method");
+        }else{
+            System.out.println("FAIL: remove method");
+        }
     }
 
     public static void testIsEmpty(String dequeType){

@@ -12,6 +12,11 @@ public class DoublyLinkedListDeque<E> implements Deque<E> {
     }
 
     @Override
+    public int size() {
+        return data.size();
+    }
+
+    @Override
     public void empty() {
         data.empty();
     }
